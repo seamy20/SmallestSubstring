@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/smallestsubstring/static/css/main.25f7bdfa.chunk.css",
-    "main.js": "/smallestsubstring/static/js/main.aa63e40f.chunk.js",
-    "main.js.map": "/smallestsubstring/static/js/main.aa63e40f.chunk.js.map",
-    "runtime~main.js": "/smallestsubstring/static/js/runtime~main.533b4d76.js",
-    "runtime~main.js.map": "/smallestsubstring/static/js/runtime~main.533b4d76.js.map",
-    "static/css/2.5018ce44.chunk.css": "/smallestsubstring/static/css/2.5018ce44.chunk.css",
-    "static/js/2.0b6be274.chunk.js": "/smallestsubstring/static/js/2.0b6be274.chunk.js",
-    "static/js/2.0b6be274.chunk.js.map": "/smallestsubstring/static/js/2.0b6be274.chunk.js.map",
-    "index.html": "/smallestsubstring/index.html",
-    "precache-manifest.663aec7a7b9b8d7d8b99352cee444be9.js": "/smallestsubstring/precache-manifest.663aec7a7b9b8d7d8b99352cee444be9.js",
-    "service-worker.js": "/smallestsubstring/service-worker.js",
-    "static/css/2.5018ce44.chunk.css.map": "/smallestsubstring/static/css/2.5018ce44.chunk.css.map",
-    "static/css/main.25f7bdfa.chunk.css.map": "/smallestsubstring/static/css/main.25f7bdfa.chunk.css.map",
-    "static/media/mdb.css": "/smallestsubstring/static/media/arrow_right.8ef6a08c.svg",
-    "static/media/all.min.css": "/smallestsubstring/static/media/fa-solid-900.f6121be5.woff2"
+    "main.css": "/static/css/main.25f7bdfa.chunk.css",
+    "main.js": "/static/js/main.97a9c11b.chunk.js",
+    "main.js.map": "/static/js/main.97a9c11b.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.533b4d76.js",
+    "runtime~main.js.map": "/static/js/runtime~main.533b4d76.js.map",
+    "static/css/2.5018ce44.chunk.css": "/static/css/2.5018ce44.chunk.css",
+    "static/js/2.0b6be274.chunk.js": "/static/js/2.0b6be274.chunk.js",
+    "static/js/2.0b6be274.chunk.js.map": "/static/js/2.0b6be274.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.8fea8a7e80ede29e80d4cd9182dc794c.js": "/precache-manifest.8fea8a7e80ede29e80d4cd9182dc794c.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.5018ce44.chunk.css.map": "/static/css/2.5018ce44.chunk.css.map",
+    "static/css/main.25f7bdfa.chunk.css.map": "/static/css/main.25f7bdfa.chunk.css.map",
+    "static/media/mdb.css": "/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/all.min.css": "/static/media/fa-solid-900.f6121be5.woff2"
   }
 }

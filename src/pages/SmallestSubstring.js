@@ -1,0 +1,174 @@
+import React from 'react';
+import {
+  MDBNavbar, MDBCol, MDBBtn, MDBContainer,  MDBRow,
+} from 'mdbreact';
+
+
+class Index extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        showsubstringLength:false
+    };
+    this.shortestValue = 0;
+  }
+
+  onClick() {
+    this.setState({
+    });
+  }
+
+
+  shortestSubstring() {
+    var s  = document.getElementById('stringPattern').value.toLowerCase();   
+    var pat = s.split('').filter(function(item, i, ar){ return ar.indexOf(item) === i; }).sort().join('');
+    //ignore spacing
+    pat = pat.replace(' ','')
+    var n = s.length; 
+
+
+    var mapPattern={}, mapString={}, countT=0;
+
+    //pointers
+    var l=0, r=0;
+
+
+    //invalid if string length is less than the pattern 
+    if(n<pat.length){
+        console.log("Error");
+    }
+
+    // store occurrence ofs characters of pattern 
+    for(var i=0; i<pat.length; i++){
+        var c = pat.charAt(i);
+        if(mapPattern[c] === undefined) {
+            mapPattern[c] = 1;
+            countT++;
+        } else{
+            mapPattern[c]++;
+        }
+    }
+
+
+    // start traversing the string 
+    var addedChar=0;
+    var min = [0, n-1, Number.MAX_SAFE_INTEGER]; 
+    while( r < n) {
+         c = s.charAt(r);
+        if(mapString[c] === undefined) {
+            mapString[c] = 1;
+        } else {
+            mapString[c]++;
+        }
+
+        //if pattern and string maps match
+        if (mapPattern[c] && mapPattern[c] === mapString[c]) {
+            addedChar++;
+        }
+        //Keep Moving right
+        while(addedChar === countT && l<=r) {
+            var cl = s.charAt(l);
+            // Try to minimize
+            if((r-l+1) < min[2]){
+                min = [l, r, r-l+1];
+            }
+
+            mapString[cl]--;
+            if(mapPattern[cl] && mapString[cl] < mapPattern[cl]){
+                addedChar--;
+            }
+            l++;
+        }
+        r++;
+    }
+
+
+    if(min[2] === Number.MAX_SAFE_INTEGER){
+       console.log("Error");
+    }
+
+    var finalStr =  s.substring(min[0], min[1]+1);
+    this.shortestValue = finalStr.length;
+    this.setState({
+        showsubstringLength:true
+    });
+    console.log(finalStr);
+
+  }
+
+
+
+render() {  
+    return (
+      <div>
+        <header>
+          <MDBNavbar id="custom-nav">
+              <div class="col-md-12" >
+                <p className="display-7  text-uppercase mt-3 title">Shortest Substring</p>
+                </div>
+          </MDBNavbar>
+
+          {/* Page Content */}
+          <MDBContainer fluid>
+            <MDBRow className="">
+              <MDBCol size="12" className="full-img">
+                <div class="mt-5 d-flex justify-content-center">
+                  <p class="lead text-center dark-grey-text mb-3 display-7 initial-complaint-title orange-underline">
+                  </p>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <p class="lead text-center grey-text mb-4">
+                    Enter a string below to find the shortest substring
+                  </p>
+                </div>
+              </MDBCol>
+            </MDBRow>
+
+            <MDBRow>
+              <MDBCol size="12" className="full-img">           
+                <div class="row no-padding mt-5 mb-5">
+                  <div class="col-md-3"></div>
+
+                  {/* Card */}
+                  <div class="col-md-6">
+                    <div class="card">
+                      {/*  Card content */}
+                      <div class="card-body">
+                                            {/* String Pattern*/}                                            
+                                            <div class="col-md-12" className="fullDivWidth mb-3">
+                                                <div class="md-form" >
+                                                    <i class="fas fa-signature prefix blue-text"></i>
+                                                    <input id="stringPattern" class="form-control" type="text" placeholder="*Enter String Pattern" pattern="^[_a-z A-Z]{3,}" required/>
+                                                </div>
+                                            </div>
+
+
+                        {/*  Button */}
+                        <div class="d-flex justify-content-center mt-4 mb-4">
+                        <MDBBtn onClick={()=>this.shortestSubstring()}   type="button" class="btn btn-blue" disable>Check Shortest Substring</MDBBtn>
+                        </div>
+                        {
+                            this.state.showsubstringLength?
+                                <div>
+                                        <p className="display-7 text-center text-uppercase">The Shortest Substring is</p>
+                                        <hr className="divider" />
+                                        <p className="display-7 text-center text-uppercase result">{this.shortestValue}</p>
+                                </div>
+                            :null
+                        }
+
+
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6"></div>
+              </div>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </header>
+    </div>
+  );
+  }
+}
+export default Index;

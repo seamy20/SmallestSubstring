@@ -1,0 +1,23 @@
+.divider {
+    border:0;
+    height:1px;
+    background-image: linear-gradient(to right, #f0f0f0, #FFA000, #EE6C36, #f0f0f0);
+    width:50%;
+  }
+
+  .result{
+    color:#1976D2;
+    font-weight: 600;
+    font-size: x-large;
+  }
+
+  .title{
+    color:white;
+    text-align:center;
+  }
+
+  #custom-nav{
+    background-color:#1976D2;
+    font-weight: bold;
+    font-size: 20px;
+  }

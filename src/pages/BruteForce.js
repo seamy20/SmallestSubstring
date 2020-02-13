@@ -3,8 +3,8 @@ import {
   MDBNavbar, MDBCol, MDBBtn, MDBContainer,  MDBRow,
 } from 'mdbreact';
 
-
-class Index extends React.Component {
+//Brute For Example. -- Better method within SmallestSubstring.js
+class BruteForce extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,75 +27,39 @@ class Index extends React.Component {
     var n = s.length; 
 
 
-    var mapPattern={}, mapString={}, countT=0;
+     /*
+    Explore all left boundaries for windows. AT EACH planting of
+    a left boundary, explore all right boundaries.
+    This is how we explore all windows of substrings we can take.
+  */
+  for (var left = 0; left < n; left++) {
+    for (var right = left; right < n; right++) {
 
-    //pointers
-    var l=0, r=0;
+      /*
+        Take the snippet that will give us the window we want to
+        investigate. Do 'right + 1' since .substring excludes upper
+        index, so basically we get a snippet from index 'left' ro 'right'
+      */
+      var windowSnippet = searchString.substring(left, right + 1);
 
+      /*
+        Test the window
+      */
+      var windowContainsAllChars = stringContainsAllCharacters(windowSnippet, t);
 
-    //invalid if string length is less than the pattern 
-    if(n<pat.length){
-        console.log("Error");
+      /*
+        If it satisfies and is smaller than the 'minWindowLengthSeenSoFar', update the
+        'minWindowLengthSeenSoFar' and the minWindow string
+      */
+      if (windowContainsAllChars && windowSnippet.length() < minWindowLengthSeenSoFar) {
+        minWindowLengthSeenSoFar = windowSnippet.length();
+        minWindow = windowSnippet;
+      }
+
     }
-
-    // store occurrence ofs characters of pattern 
-    for(var i=0; i<pat.length; i++){
-        var c = pat.charAt(i);
-        if(mapPattern[c] === undefined) {
-            mapPattern[c] = 1;
-            countT++;
-        } else{
-            mapPattern[c]++;
-        }
-    }
-
-
-    // start traversing the string 
-    var addedChar=0;
-    var min = [0, n-1, Number.MAX_SAFE_INTEGER]; 
-    //keep moving right
-    while( r < n) {
-         c = s.charAt(r);
-        if(mapString[c] === undefined) {
-            mapString[c] = 1;
-        } else {
-            mapString[c]++;
-        }
-
-        //if pattern and string maps match
-        if (mapPattern[c] && mapPattern[c] === mapString[c]) {
-            addedChar++;
-        }
-        //bring left forward
-        while(addedChar === countT && l<=r) {
-            var cl = s.charAt(l);
-            // Try to minimize
-            if((r-l+1) < min[2]){
-                min = [l, r, r-l+1];
-            }
-
-            mapString[cl]--;
-            if(mapPattern[cl] && mapString[cl] < mapPattern[cl]){
-                addedChar--;
-            }
-            l++;
-        }
-        r++;
-    }
-
-
-    if(min[2] === Number.MAX_SAFE_INTEGER){
-       console.log("Error");
-    }
-
-    var finalStr =  s.substring(min[0], min[1]+1);
-    this.shortestValue = finalStr.length;
-    this.setState({
-        showsubstringLength:true
-    });
-    console.log(finalStr);
 
   }
+}
 
 
 
@@ -172,4 +136,4 @@ render() {
   );
   }
 }
-export default Index;
+export default BruteForce;

@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // Main Content (Top Nav Links)
 import SmallestSubstring from '../pages/SmallestSubstring.js'
+import BruteForce from '../pages/BruteForce.js'
 
 
 class Routes extends React.Component {
@@ -10,6 +11,7 @@ class Routes extends React.Component {
     return (
       <Switch>
         <Route path="/" exact component={SmallestSubstring} />
+        <Route path="/bruteforce" exact component={BruteForce} />
       </Switch>
     );
   }
